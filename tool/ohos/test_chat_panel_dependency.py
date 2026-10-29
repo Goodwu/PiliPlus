@@ -18,7 +18,7 @@ class ChatPanelDependencyContract(unittest.TestCase):
             lock,
         )
         self.assertIsNotNone(match, "Current App lock lacks chat_bottom_container Git SHA")
-        selected = recipe["repositories"]["chat_bottom_container"]["git"]["ref"]
+        selected = recipe["upstream_git_pins"]["chat_bottom_container"]["git"]["ref"]
         self.assertEqual(selected, match.group(1),
                          "Upstream chat panel constructor API differs from OHOS compatibility dependency")
 
