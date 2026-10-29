@@ -15,7 +15,7 @@ Flutter 使用固定的官方 `CPF-Flutter/flutter_flutter:oh-3.44.9-dev`。
 - `addition-only`：保留原有默认行为，比较与 `origin/main` 的共同祖先，拒绝改变
   原上游文件，适用于尚未修改应用代码的旧 OHOS 分支。
 - `approved-integration`：验证独立锁定的批准文件及其 SHA256，接受当前已集成的
-  应用基线 `2a09397994bdfd9c4f0801c40fd165a763c65505`。它锁定该 Git tree 和
+  应用基线 `6cca8ac6d74fcaa1911ad37488f84bccb56cd498`。它锁定该 Git tree 和
   18 个集成边界文件；基线之后只允许批准文件列出的 CI、工具和文档路径变更。
   应用源码、资源和平台工程的新增、删除、修改仍被拒绝；`pubspec.yaml`
   只接受批准文件中 SHA-256 明确锁定的已审查版本，其他修改仍会失败。
@@ -35,7 +35,7 @@ OHOS 构建适配只修改独立副本。**构建副本确实修改部分原应�
 ```sh
 python3 tool/ohos/ohos.py check-source \
   --source-policy approved-integration \
-  --source-policy-sha256 5e594b3170242b81e8ac44d953d327fae37ef102365615209dafd3f16e178972
+  --source-policy-sha256 ec4bbb75aa578a146b4a6b8594fa8c5490545843ff059c6bfea554cae39c81c9
 python3 -m unittest discover -s tool/ohos -p 'test_*.py' -v
 ```
 
@@ -88,7 +88,7 @@ AArch64 ELF、archive/library 精确摘要，以及真实编译记录中的
 python3 tool/ohos/ohos.py prepare-build \
   --output /tmp/PiliPlus-ohos-build \
   --source-policy approved-integration \
-  --source-policy-sha256 5e594b3170242b81e8ac44d953d327fae37ef102365615209dafd3f16e178972
+  --source-policy-sha256 ec4bbb75aa578a146b4a6b8594fa8c5490545843ff059c6bfea554cae39c81c9
 ```
 
 `--revision <commit>` 可指定源提交；输出目录必须不存在且位于 Git checkout

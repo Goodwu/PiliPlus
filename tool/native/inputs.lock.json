@@ -5,7 +5,7 @@
     "branch": "feature/dv"
   },
   "flutter": {
-    "version": "3.47.7"
+    "version": "3.47.8"
   },
   "platforms": {
     "android": {
@@ -291,7 +291,7 @@
           "webp-mux"
         ]
       },
-      "application_source_policy_sha256": "5e594b3170242b81e8ac44d953d327fae37ef102365615209dafd3f16e178972"
+      "application_source_policy_sha256": "ec4bbb75aa578a146b4a6b8594fa8c5490545843ff059c6bfea554cae39c81c9"
     }
   }
 }

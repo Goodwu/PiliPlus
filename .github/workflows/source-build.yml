@@ -43,6 +43,7 @@ jobs:
         run: |
           policy_sha=$(python -c 'import json; print(json.load(open("tool/native/inputs.lock.json"))["platforms"]["ohos"]["application_source_policy_sha256"])')
           python tool/ohos/ohos.py check-source --source-policy approved-integration --source-policy-sha256 "$policy_sha"
+          python -m unittest discover -s tool/ohos -p 'test_*.py' -v
       - name: Freeze development HEADs or tagged source anchors once
         id: source
         env:
