@@ -54,7 +54,6 @@ _EXPECTED_PATHS = {
     "lib/utils/image_utils.dart",
     "lib/pages/webview/view.dart",
     "lib/pages/blacklist/view.dart",
-    "lib/pages/common/publish/common_publish_page.dart",
     "lib/pages/episode_panel/view.dart",
     "lib/pages/live_room/superchat/superchat_card.dart",
     "lib/utils/reply_utils.dart",

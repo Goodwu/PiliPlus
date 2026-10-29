@@ -18,7 +18,7 @@
  
        String videoName = "video_${Utils.getFileName(liveUrl)}";
        String videoPath = '$tmpDirPath/$videoName';
-@@ -123,30 +126,47 @@
+@@ -123,29 +126,46 @@
          } else {
            SmartDialog.showToast('保存失败');
            return false;
@@ -28,7 +28,6 @@
 -        await saveFileImg(
 -          filePath: videoPath,
 -          fileName: videoName,
--          type: FileType.video,
 -          needToast: true,
 -        );
 +        if (PlatformUtils.isOHOS) {
@@ -47,7 +46,6 @@
 +          await saveFileImg(
 +            filePath: videoPath,
 +            fileName: videoName,
-+            type: FileType.video,
 +            needToast: true,
 +          );
 +        }

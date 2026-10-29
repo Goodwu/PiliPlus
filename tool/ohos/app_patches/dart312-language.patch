@@ -15,23 +15,6 @@
    const BlackListPage({super.key});
  
    @override
---- a/lib/pages/common/publish/common_publish_page.dart
-+++ b/lib/pages/common/publish/common_publish_page.dart
-@@ -163,13 +163,13 @@
-       updatePanelTypeFunc();
-     }
-   }
- 
-   Future<void> hidePanel([_]) async {
-     if (focusNode.hasFocus) {
--      await Future.pause(const Duration(milliseconds: 100));
-+      await Future<void>.delayed(const Duration(milliseconds: 100));
-       if (!mounted) return;
-       focusNode.unfocus();
-     }
-     updateInputView(isReadOnly: false);
-     if (ChatBottomPanelType.none == controller.currentPanelType) return;
-     controller.updatePanelType(ChatBottomPanelType.none);
 --- a/lib/pages/episode_panel/view.dart
 +++ b/lib/pages/episode_panel/view.dart
 @@ -679,13 +679,13 @@

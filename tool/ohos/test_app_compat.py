@@ -24,6 +24,7 @@ UNCHANGED = {
     "lib/utils/extension/theme_ext.dart",
     "lib/utils/theme_utils.dart",
     "lib/plugin/pl_player/controller.dart",
+    "lib/pages/common/publish/common_publish_page.dart",
     "lib/services/service_locator.dart",
     "pubspec.yaml",
     "pubspec.lock",
@@ -59,7 +60,7 @@ class ApplicationCompatibilityTests(unittest.TestCase):
 
     def test_real_main_copy_gets_only_reviewed_platform_changes(self):
         report = app.prepare_application(self.workspace)
-        self.assertEqual(report["application_files_changed"], 16)
+        self.assertEqual(report["application_files_changed"], 15)
         self.assertEqual({entry["path"] for entry in report["changed_files"]}, app._EXPECTED_PATHS)
         after = self.snapshot()
         for relative in UNCHANGED:
@@ -118,7 +119,6 @@ class ApplicationCompatibilityTests(unittest.TestCase):
     def test_dart312_compatibility_preserves_all_existing_wait_durations(self):
         app.prepare_application(self.workspace)
         waits = {
-            "lib/pages/common/publish/common_publish_page.dart": ["milliseconds: 100"],
             "lib/pages/episode_panel/view.dart": ["milliseconds: 225"],
             "lib/utils/reply_utils.dart": ["seconds: 8"],
             "lib/utils/request_utils.dart": ["milliseconds: 450", "seconds: 5"],
@@ -131,6 +131,13 @@ class ApplicationCompatibilityTests(unittest.TestCase):
                 # The wait durations are upstream behavior, including anti-fraud
                 # requests; compatibility must never shorten or remove them.
                 self.assertIn(f"await Future.pause(const Duration({duration}));".encode(), self.original[relative])
+        # Upstream removed the old 100 ms keyboard hide delay entirely.
+        # Do not reintroduce it merely to make Dart 3.12 compatibility pass.
+        panel = (self.workspace / "lib/pages/common/publish/common_publish_page.dart").read_text()
+        self.assertIn("void hidePanel([_]) {", panel)
+        self.assertIn("if (focusNode.hasFocus) focusNode.unfocus();", panel)
+        self.assertNotIn("Future.pause", panel)
+        self.assertEqual(panel.encode(), self.original["lib/pages/common/publish/common_publish_page.dart"])
         screenshot = (self.workspace / "lib/pages/live_room/superchat/superchat_card.dart").read_text()
         self.assertIn("future: () => Future<void>.delayed(Duration.zero)", screenshot)
         self.assertNotIn("Future.pause", screenshot)
@@ -143,7 +150,7 @@ class ApplicationCompatibilityTests(unittest.TestCase):
         prefix = b"// Independent upstream notice outside every patch context.\n"
         self.write(relative, prefix + self.original[relative])
         report = app.prepare_application(self.workspace)
-        self.assertEqual(report["application_files_changed"], 16)
+        self.assertEqual(report["application_files_changed"], 15)
         self.assertTrue((self.workspace / relative).read_bytes().startswith(prefix))
 
     def test_later_patch_drift_rejects_without_partially_editing_widgets(self):
@@ -223,7 +230,7 @@ class ApplicationCompatibilityTests(unittest.TestCase):
         self.assertEqual((self.workspace / "pubspec.yaml").read_bytes(), pubspec_before)
         self.assertIn(b"package:piliplus/main.dart", after["test/uri_example.dart"])
         self.assertIn(b"const brand = 'PiliPlus'", after["test/uri_example.dart"])
-        self.assertGreater(report["application_files_changed"], 16)
+        self.assertGreater(report["application_files_changed"], 15)
         self.assertGreater(report["package_uri_files_changed"], 0)
         self.assertEqual(report["package_uri_replacements"], sum(entry["package_uri_replacements"] for entry in report["changed_files"]))
         second = app.prepare_application(self.workspace, normalize_package_name=True)
