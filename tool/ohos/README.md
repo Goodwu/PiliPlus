@@ -35,7 +35,7 @@ OHOS 构建适配只修改独立副本。**构建副本确实修改部分原应�
 ```sh
 python3 tool/ohos/ohos.py check-source \
   --source-policy approved-integration \
-  --source-policy-sha256 033afe82aecc7aeb68cdc0ab54d9c8d6259985334f05063837db50b9a2ef2f6e
+  --source-policy-sha256 5f2823a47c506690c006c174b12cdf5e6214ba2e071b5756f7222c7d4dfab99a
 python3 -m unittest discover -s tool/ohos -p 'test_*.py' -v
 ```
 
@@ -88,7 +88,7 @@ AArch64 ELF、archive/library 精确摘要，以及真实编译记录中的
 python3 tool/ohos/ohos.py prepare-build \
   --output /tmp/PiliPlus-ohos-build \
   --source-policy approved-integration \
-  --source-policy-sha256 033afe82aecc7aeb68cdc0ab54d9c8d6259985334f05063837db50b9a2ef2f6e
+  --source-policy-sha256 5f2823a47c506690c006c174b12cdf5e6214ba2e071b5756f7222c7d4dfab99a
 ```
 
 `--revision <commit>` 可指定源提交；输出目录必须不存在且位于 Git checkout

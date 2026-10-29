@@ -8,7 +8,7 @@
   "patch_sha256": "2109c3c44c8f93febf04636d557f863d6c05b15fa5a1287ed3f86f2a8474443b",
   "existing_integration": {
     "source_policy": "tool/ohos/approved_integration.json",
-    "source_policy_sha256": "033afe82aecc7aeb68cdc0ab54d9c8d6259985334f05063837db50b9a2ef2f6e"
+    "source_policy_sha256": "5f2823a47c506690c006c174b12cdf5e6214ba2e071b5756f7222c7d4dfab99a"
   },
   "required_packages": [
     "media_kit",

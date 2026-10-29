@@ -45,7 +45,7 @@
   "dependencies": {
     "lock_sha256": "66af1fc833e492890cda6d5f4db23accb91a8bb075c527d73c3cc4c6513f205b",
     "overrides_sha256": "525fe8e1f6878b4af4e20d7cedfe5a9fa50794834a586a9a6c8faf7041a3dc24",
-    "recipe_sha256": "13fbe32ddcbb5acf9e958fe2f45c250ff3537a79f0bceb754829afdf2853d09f",
+    "recipe_sha256": "2c294b6fe47c080bc512b580ba2c5c2d6b0cea4a33c4a0391e9f818e0c9ead3c",
     "compatibility_decisions": [
       {
         "package": "material_ui",
@@ -76,6 +76,12 @@
         "application_lock": "sibling ../media-kit path overrides",
         "ohos_recipe": "the explicitly selected committed Goodwu/media-kit snapshot",
         "reason": "Replace the original sibling paths only in the exported OHOS copy, then verify every resolved media package points into that snapshot."
+      },
+      {
+        "package": "chat_bottom_container",
+        "application_lock": "a39a5b2a0d108c33608fabd054ea97334d21ad6f",
+        "ohos_recipe": "a39a5b2a0d108c33608fabd054ea97334d21ad6f",
+        "reason": "The merged upstream App requires constructor parameters data and currentPanelType introduced in this exact Git commit; it retains Dart >=3.0 and does not alter native release inputs."
       }
     ]
   }

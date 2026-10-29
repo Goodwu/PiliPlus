@@ -350,7 +350,7 @@
     "chat_bottom_container": {
       "git": {
         "url": "https://github.com/bggRGjQaUbCoE/flutter_chat_packages.git",
-        "ref": "d2f7b8df63126d9f347c1320de10db15deab06db",
+        "ref": "a39a5b2a0d108c33608fabd054ea97334d21ad6f",
         "path": "packages/chat_bottom_container"
       }
     },
