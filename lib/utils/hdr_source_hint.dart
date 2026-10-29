@@ -1,4 +1,4 @@
-import 'package:PiliPlus/models/common/video/video_quality.dart';
+import 'package:PiliPlus/models/common/video/base_quality.dart';
 import 'package:PiliPlus/models/video/play/url.dart' show VideoItem;
 import 'package:media_kit_video/media_kit_video.dart'
     show HdrDynamicMetadata, HdrSourceDescriptor;
