@@ -2,9 +2,9 @@
   "schema": 1,
   "mode": "approved-integration",
   "repository": "https://github.com/Goodwu/PiliPlus",
-  "baseline_commit": "6cca8ac6d74fcaa1911ad37488f84bccb56cd498",
-  "baseline_tree": "939e8469bb1caf19227c788daefca41a03ee0ca1",
-  "reason": "Reviewed rebaseline of Goodwu/PiliPlus feature/dv after upstream main 628290b5 merge at 6cca8ac6. Preserve the merged ManagedVideoPlayback/RoutedVideoPlayback integration and its exact file hashes while retaining strict source drift protection. Android, OHOS and other native release SHA anchors remain unchanged.",
+  "baseline_commit": "b934ab4fed1f4bca7ceaceca1732f39e8075dc11",
+  "baseline_tree": "41c6e164f38e4a6195e279de41dc843f019f49e8",
+  "reason": "Reviewed Goodwu/PiliPlus feature/dv baseline after the upstream 628290b5 merge and two minimal BaseQuality import fixes at b934ab4fed1f4bca7ceaceca1732f39e8075dc11. Preserve exact ManagedVideoPlayback/RoutedVideoPlayback source digests, Flutter 3.47.8 dependency lock and OHOS compatibility patches. All native release SHA anchors remain immutable.",
   "mutable_paths": [
     "tool/ohos/",
     "tool/native/",
@@ -38,8 +38,8 @@
       "lib/plugin/pl_player/widgets/playback_diag_bar.dart": "7d2a9798bf1731f4dc07fffad67f324ed042bfdccc7e0122e173031a05590d18",
       "lib/plugin/pl_player/widgets/playback_diag_sampler.dart": "eb2cf59a0a25b0aaa2f5982a0a915c8b666ae81fdf5a842bc6d24fd290d41229",
       "lib/plugin/pl_player/widgets/playback_diag_scroll_view.dart": "1d0ed017a8999b6e9d3927fcec0b4026a26bd85d223af1d28970fad66fd97969",
-      "lib/utils/codec_capability.dart": "c265e1281aee5b2a4f5b2e554f5b792cb6152fa869331d6d25ba1a7b6564b1f1",
-      "lib/utils/hdr_source_hint.dart": "994a337892a4287ed69a955cb676c127b2350437fec8ca6a277be994cb2e6032"
+      "lib/utils/codec_capability.dart": "305293e7180c160efa6fbbd828315e27d727c18308fb04ad61953d7ccc177c0c",
+      "lib/utils/hdr_source_hint.dart": "fbd1e55408a00bd4d937e9547378589d2429314a93cbb1ef0c440c971d028114"
     }
   },
   "dependencies": {
