@@ -10,7 +10,7 @@
   "host_engine_revision": "5a2a6a42cce67f965cf540fcecf616faca624aa1",
   "ohos_engine_revision": "24497d6833225b0445953e1dd05dc6538c16a8dd",
   "upstream_patch_driver": "lib/scripts/patch.ps1",
-  "upstream_patch_driver_sha256": "20762dd1618d0abb1b4b8a12f0d7467d8859095da2b09f335960b8929ca95b94",
+  "upstream_patch_driver_sha256": "1edcb59d8a797f82c8efaac150ed2133e9b3a57db7b84d1a20859531fcb669e2",
   "patches": [
     {
       "upstream": "lib/scripts/modal_barrier.patch",
