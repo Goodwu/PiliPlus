@@ -27,7 +27,7 @@ class SourceTests(unittest.TestCase):
         self.git("init", "--initial-branch=main")
         self.git("config", "user.name", "OHOS source test")
         self.git("config", "user.email", "ohos-test@example.invalid")
-        self.write("pubspec.yaml", 'name: PiliPlus\nversion: 2.1.6+17\nenvironment:\n  sdk: ">=3.13.0"\n  flutter: 3.47.7\n')
+        self.write("pubspec.yaml", 'name: PiliPlus\nversion: 2.1.6+17\nenvironment:\n  sdk: ">=3.13.0"\n  flutter: 3.47.8\n')
         self.write("lib/main.dart", "void main() { /* upstream application */ }\n")
         self.write("pubspec.lock", "upstream-locked-dependencies\n")
         self.write("assets/icon.bin", b"\x00\xff\x01original-icon\x00")
@@ -169,6 +169,17 @@ class SourceTests(unittest.TestCase):
         self.assertEqual(ohos.read_pubspec(out)["name"], "PiliPlus")
         self.assertEqual([change["path"] for change in profile.generated_changes(out)], ["pubspec.yaml"])
         self.assertEqual((out / "pubspec.lock").read_bytes(), (self.root / "pubspec.lock").read_bytes())
+
+    def test_old_upstream_flutter_pin_is_rejected_before_ohos_compat(self):
+        profile = ohos.helper("build_profile")
+        out = self.parent / "prior sdk app copy"
+        ohos.prepare(self.root, out, None, "HEAD")
+        old = (out / "pubspec.yaml").read_text().replace("flutter: 3.47.8", "flutter: 3.47.7")
+        (out / "pubspec.yaml").write_text(old)
+        before = (out / "pubspec.yaml").read_bytes()
+        with self.assertRaisesRegex(profile.ProfileError, "OHOS patch anchor changed"):
+            profile.environment_profile(out)
+        self.assertEqual((out / "pubspec.yaml").read_bytes(), before)
 
     def test_upstream_patch_drift_fails_before_other_files_are_written(self):
         profile = ohos.helper("build_profile")

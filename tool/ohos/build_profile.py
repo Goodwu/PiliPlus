@@ -98,7 +98,7 @@ def apply_replacements(workspace: Path, replacements: dict[str, list[tuple[str, 
 
 def environment_profile(workspace: Path) -> list[dict]:
     return apply_replacements(workspace, {"pubspec.yaml": [
-        ('  sdk: ">=3.13.0"\n  flutter: 3.47.7\n',
+        ('  sdk: ">=3.13.0"\n  flutter: 3.47.8\n',
          '  sdk: ">=3.12.0 <4.0.0"\n  flutter: ">=3.44.0 <3.45.0"\n'),
     ]})
 
